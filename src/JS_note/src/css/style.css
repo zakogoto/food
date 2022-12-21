@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.wrapper {
+  --text-color: blue;
+}
+
+.element {
+  width: 500px;
+  margin: 20px;
+  color: var(--text-color);
+}
+
+img {
+  width: 300px;
+}
+
+section.blocks {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.square {
+  width: 200px;
+  height: 200px;
+  border: 3px black solid;
+}
+
+.hello {
+  width: 300px;
+  height: 200px;
+  background: blue;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(42, 1, 246);
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border: 3px black solid;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.start {
+  display: block;
+    width: 200px;
+    height: 100px;
+    background: silver;
+    font-size: 36px;
+    border-radius: 5px;
+    margin: 0 auto 20px auto;
+
+}
+
+.wrapper button {
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px;
+  transition: 0.6s all;
+}
+
+.wrapper button.red {
+  background-color: red;
+  transition: 0.6s all;
+}
+.wrapper button.orange {
+  background-color: orange;
+  transition: 0.6s all;
+}
+.wrapper button.yellow {
+  background-color: yellow;
+  transition: 0.6s all;
+}
+.wrapper button.green {
+  background-color: green;
+  transition: 0.6s all;
+}
+.wrapper button.blue {
+  background-color: blue;
+  transition: 0.6s all;
+}
+.wrapper button.purple {
+  background-color: purple;
+  transition: 0.6s all;
+}
+
+.wrap {
+  visibility: scroll;
+  margin: 0 auto;
+  padding: 10px;
+  width: 400px;
+  height: 350px;
+  border: 2px #000 solid;
+  overflow: scroll;
+
+}
+div .scroll_btn {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  height: 100px;
+}

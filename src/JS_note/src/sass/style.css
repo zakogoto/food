@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.wrapper {
+  --text-color: blue;
+}
+
+.element {
+  width: 500px;
+  margin: 20px;
+  color: var(--text-color);
+}
+
+img {
+  width: 300px;
+}
