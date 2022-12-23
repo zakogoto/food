@@ -354,51 +354,109 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
     // Slider
 
-    const prev = document.querySelector('.offer__slider-prev'),
+    const sliderWrapper = document.querySelector('.offer__slider-wrapper'),
+          prev = document.querySelector('.offer__slider-prev'),
           next = document.querySelector('.offer__slider-next'),
-          sliderWrap = document.querySelector('.offer__slider-wrapper'),
-          slides = sliderWrap.querySelectorAll('.offer__slide'),
+          sliderField = sliderWrapper.querySelector('.offer__slider-inner'),
+          slides = sliderWrapper.querySelectorAll('.offer__slide'),
           currSlide = document.querySelector('#current'),
-          totalSlide = document.querySelector('#total');
+          totalSlide = document.querySelector('#total'),
+          width = window.getComputedStyle(sliderWrapper).width;
 
-    let slideIndex = 1;
+    let slideIndex = 1,
+        offset = 0;
+
+        if(slides.length < 10) {
+            totalSlide.textContent = `/0${slides.length}`;
+            } else {
+            totalSlide.textContent = `/${slides.length}`;
+            }
     
-    showSlides(slideIndex);
+    sliderField.style.width = 100 * slides.length + '%';
+    sliderField.style.display = 'flex';
+    sliderField.style.transition = '0.6s all';
+    sliderWrapper.style.overflow = 'hidden';
+    slides.forEach(slide => slide.style.width = width);
 
-    if(slides.length < 10) {
-        totalSlide.textContent = `/0${slides.length}`;
-    } else {
-        totalSlide.textContent = `/${slides.length}`;
-    }
+    next.addEventListener('click', ()=> {
+        if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
+            offset = 0;
+        } else {
+            offset += +width.slice(0, width.length - 2);
+        }
 
-    function showSlides(n) {
-        if (n > slides.length){
+        sliderField.style.transform = `translateX(-${offset}px)`;
+
+        if (slideIndex == slides.length) {
             slideIndex = 1;
+        } else {
+            slideIndex++;
         }
-        if (n < 1) {
-            slideIndex = slides.length;
-        }
-
-        slides.forEach(item => item.style.display = 'none');
-        
-        slides[slideIndex - 1].style.display = 'block';
 
         if (slides.length < 10) {
             currSlide.textContent = `0${slideIndex}`;
         } else {
             currSlide.textContent = slideIndex;
         }
-    }
-    
-    function changeSlide(n) {
-        showSlides(slideIndex += n);
-    }
+    });
 
     prev.addEventListener('click', ()=> {
-       changeSlide(-1);
+        if (offset == 0) {
+            offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+        } else {
+            offset -= +width.slice(0, width.length - 2);
+        }
+
+        sliderField.style.transform = `translateX(-${offset}px)`;
+
+        if (slideIndex == 1) {
+            slideIndex = slides.length;
+        } else {
+            slideIndex--;
+        }
+
+        if (slides.length < 10) {
+            currSlide.textContent = `0${slideIndex}`;
+        } else {
+            currSlide.textContent = slideIndex;
+        }
     });
-    next.addEventListener('click', ()=> {
-        changeSlide(1); 
-    });
+    // showSlides(slideIndex);
+
+    // if(slides.length < 10) {
+    //     totalSlide.textContent = `/0${slides.length}`;
+    // } else {
+    //     totalSlide.textContent = `/${slides.length}`;
+    // }
+
+    // function showSlides(n) {
+    //     if (n > slides.length){
+    //         slideIndex = 1;
+    //     }
+    //     if (n < 1) {
+    //         slideIndex = slides.length;
+    //     }
+
+    //     slides.forEach(item => item.style.display = 'none');
+        
+    //     slides[slideIndex - 1].style.display = 'block';
+
+    //     if (slides.length < 10) {
+    //         currSlide.textContent = `0${slideIndex}`;
+    //     } else {
+    //         currSlide.textContent = slideIndex;
+    //     }
+    // }
+    
+    // function changeSlide(n) {
+    //     showSlides(slideIndex += n);
+    // }
+
+    // prev.addEventListener('click', ()=> {
+    //    changeSlide(-1);
+    // });
+    // next.addEventListener('click', ()=> {
+    //     changeSlide(1); 
+    // });
     
 });
