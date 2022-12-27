@@ -1,0 +1,7 @@
+{
+    "jshint.config": "",
+    "emmet.preferences": {
+    
+    },
+    "js/ts.implicitProjectConfig.target": "ES2022"
+}
